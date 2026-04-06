@@ -1,5 +1,22 @@
-on: [push]
+#on: [push]  # Por ejemplo en esta linea de comando se puede apreciar que el push esta entre corchetes 
+# Esto significa que todo push sera ejecutado
+#Para que esto no pase se puede utilizar esta forma:
+# on: ---> Sin tener el push entre corchetes 
+#   push:
+#
+on:
+  push:
+    tags:
+      - 'v*.*.*'
 
 jobs:
-  test-job:
-    uses: pacontrerasj/KBTDEL-AUY-1104--SharedWorkflows/.github/workflows/holamundo.yaml@main
+  deploy:
+    uses: TU-USUARIO/TU-REPO-SHARED-WORKFLOWS/.github/workflows/deploy-api.yaml@main
+
+    with:
+      image-name: demo-api
+      image-tag: ${{ github.ref_name }}
+
+    secrets:
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
