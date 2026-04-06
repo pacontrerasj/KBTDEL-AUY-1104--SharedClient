@@ -11,7 +11,7 @@ on:
 
 jobs:
   deploy:
-    uses: TU-USUARIO/TU-REPO-SHARED-WORKFLOWS/.github/workflows/deploy-api.yaml@main
+    uses: pacontrerasj/TU-REPO-SHARED-WORKFLOWS/.github/workflows/deploy-api.yaml@main
 
     with:
       image-name: demo-api
